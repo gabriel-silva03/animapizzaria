@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        // Se não houver a marcação "logado", manda de volta para o login
+        if (localStorage.getItem("logado") !== "true") {
+            window.location.href = "../pages/login.html";
+        }
+    </script>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meus Pedidos</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+
+            <header class="navbar">
+                <div class="logo">
+                    <h2>AllegroPizzaria</h2>
+                </div>
+
+                <nav class="menu">
+                    
+                    <div class="dropdown">
+                        <button class="dropbtn">MENU</button>
+                        <div class="dropdown-content">
+                            <a href="../pages/usuario.html">Meu perfil</a>
+                            <hr>
+                            <a href="#" onclick="logout()" class="logout-link">Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="../pages/cardapio.html" class="dropbtn link-nav-estilo">CARDÁPIO</a>
+                    </div>
+
+                </nav>
+            </header>
+
+            <main class="main-content">
+
+                <section class="perfil-content">
+                    <h3 class="titulo-sessao">Histórico de Pedidos</h3>
+                    
+                    <div id="lista-pedidos">
+                        <div class="card-pedido">
+                            <div class="info-pedido">
+                                <span class="id-pedido">#9920</span>
+                                <p class="itens-pedido">1x Pizza Calabresa G, 1x Sprite 2L</p>
+                                <small class="data-pedido">30/01/2026</small>
+                            </div>
+                            <div class="status-pedido entregue">Entregue</div>
+                        </div>
+
+                        <div class="card-pedido">
+                            <div class="info-pedido">
+                                <span class="id-pedido">#9925</span>
+                                <p class="itens-pedido">2x Pizza Margherita M</p>
+                                <small class="data-pedido">Hoje às 20:15</small>
+                            </div>
+                            <div class="status-pedido preparo">No Forno</div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="sidebar-right">
+                    <section class="search-box">
+                        <h5>Qual sabor você está procurando hoje?</h5>
+                        <input type="text" id="pesquisar" placeholder="Digite o sabor desejado">
+                        <button onclick="Pesquisar()">Pesquisar</button>
+                    </section>
+                </aside>
+            </main>
+
+        <footer>
+            <p>&copy; 2025 ALLEGRO PIZZARIA LTDA. Todos os direitos reservados.</p>
+        </footer>
+
+    <script src="../js/pedidos.html"></script>
+
+</body>
+</html>

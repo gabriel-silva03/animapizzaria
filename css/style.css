@@ -1,0 +1,1244 @@
+/* ============================================================
+   RESET E DEFINIÇÕES GERAIS
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================
+   1. PÁGINA DE LOGIN
+   ============================================================ */
+
+/* Aplicar o fundo de imagem apenas quando o body tiver essa classe */
+body.login-body {
+    background: url("../assets/fundo.webp") no-repeat center center/cover;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden; /* Evita scrolls desnecessários no login */
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.login-page-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    padding: 40px 20px;
+}
+
+.login-footer-fixed {
+    background: rgba(0, 0, 0, 0.9); /* Fundo preto sólido/transparente */
+    border-top: 1px solid #b22222; /* Borda vermelha igual à Navbar */
+    padding: 50px;
+    text-align: center;
+    color: white;
+    z-index: 20;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Overlay exclusivo do login */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Container específico do Login para não conflitar com outros .container */
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1100px;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Historico da Pizzaria */
+.login-content-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 180px; /* Espaço entre o texto e o login box */
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    margin: 20px auto;
+}
+
+.login-content-flex::after {
+    content: "";
+    flex: 1;
+    display: block;
+    min-width: 450px;
+    max-width: 500px;
+}
+
+.login-history {
+    flex-shrink: 0;
+    width: 450px;
+    max-width: 500px;
+    margin-left: 0;
+    padding: 0;
+    color: white;
+    text-align: center; /* Alinhado à direita para "olhar" para o box de login */
+    font-family: 'EB Garamond', serif;
+}
+
+.login-history p {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.history-signature {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.login-header {
+    margin-bottom: 10px;
+}
+
+.slogan {
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.2;
+    font-size: 1.1rem;
+}
+
+.login-box {
+    flex-shrink: 0; /* Impede a box de amassar */
+    flex: 0 0 auto;
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 400px;
+    max-width: 400px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px) !important;
+    background: rgba(255, 255, 255, 0.01) !important;
+}
+
+.login-box input {
+    background: #fff !important;
+    color: #333 !important;
+    border: none !important;
+    margin-bottom: 15px !important;
+}
+
+.login-box h2 {
+    text-align: left;
+    font-size: 1rem;
+    margin: 15px 0 8px;
+    font-family: 'EB Garamond', serif;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.login-box button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    background: #b22222;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #8b0000;
+    transform: scale(1.02);
+}
+
+.login-options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.login-options a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ============================================================
+   2. NAVBAR E NAVEGAÇÃO
+   ============================================================ */
+.navbar {
+    height: 120px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #b22222;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0 8%;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    gap: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+}
+
+.navbar-extend {
+    height: 140px; /* O quanto você quer estender para baixo */
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    position: static;
+    transform: none;
+    align-items: flex;
+    align-items: center;
+    margin-right: 20px; /* Adiciona um espaço entre a logo e o menu */
+}
+
+.logo h2 {
+    font-family: 'Lobster', sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 3.5rem;
+    cursor: pointer;
+}
+
+.menu {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Divisor visual entre itens do menu */
+.menu > * + *::before {
+    content: "";
+    align-self: center;
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background-color: rgba(122, 122, 122, 0.4); 
+    flex-shrink: 0;
+}
+
+.dropdown, .nav-item {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Botão do Menu */
+.dropbtn {
+    background: transparent;
+    color: white;
+    height: 100%;
+    padding: 0px;  
+    width: 220px;         
+    border: none;
+    cursor: pointer;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    position: relative;
+}
+
+.dropbtn::after{
+    content: '';
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #b22222;
+    transition: width 0.4s ease;
+}
+
+.dropbtn:hover {
+    background: rgba(255, 255, 255, 0.05)
+}
+
+/* Dropdown */
+.dropdown-content {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0, 0, 0, 0.90);
+    width: 220px;
+    border-radius: 0 0 15px 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+/* Links dentro do menu */
+.dropdown-content a {
+    color: #fff;
+    padding: 18px 25px;
+    text-decoration: none;
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.dropdown-content a.logout-link {
+    color: #ff4d4d; /* Mantém o texto inicialmente em um tom de vermelho para destaque */
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+}
+
+/* Efeito Hover nos links */
+.dropdown-content a.logout-link:hover { /* Botão de Logout */
+    background-color: #b22222;
+    color: #ffffff !important; 
+    padding-top: 28px;    
+    padding-bottom: 28px; 
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background: rgba(59, 59, 59, 0.2);
+    padding-top: 28px;    
+    padding-bottom: 28px; 
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+}
+
+/* Mostrar o menu ao encostar o mouse */
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Mantém o X em -50% */
+}
+
+/* Linha divisória simples */
+.dropdown-content hr {
+    border: 0;
+    border-top: 1px solid rgba(178, 34, 34, 0.4);
+}
+
+.logout-link {
+    color: #ff4d4d !important;
+}
+
+
+.menu span {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Botão de Sair (Logout) */
+.btn-logout {
+    background: #b22222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s; 
+}
+
+.btn-logout:hover {
+    background: #8b0000;
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   3. CONTEÚDO PRINCIPAL (CARDÁPIO / PIZZAS)
+   ============================================================ */
+
+.main-content { /* Layout Principal */
+    display: flex;
+    justify-content: center; /* Centraliza o conjunto todo */
+    align-items: flex-start;
+    padding: 50px 20px;
+    gap: 30px;
+    width: 100%;
+    max-width: 1600px; /* Limite para telas muito grandes */
+    margin: 0 auto;
+}
+
+/* Container simples para links que não têm dropdown (como Pedidos) */
+.nav-item {
+    height: 100%;
+    display: flex;        /* Alinha o divisor e o link lado a lado */
+    align-items: center;  /* Centraliza verticalmente */
+    position: relative;
+}
+
+.link-nav-estilo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 0 15px;
+    height: 120px;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Efeito da linha vermelha para ambos */
+.link-nav-estilo::after, .dropbtn::after {
+    content: '';
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #b22222;
+    transition: width 0.4s ease;
+}
+
+.link-nav-estilo:hover::after {
+    width: 40px;
+}
+
+.link-nav-estilo:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/*Container secundário com slide para anuncios de ofertas e promoções */
+.slider-container {
+    width: 100%;
+    max-width: 100vw; /* Ajuste conforme a largura do seu site */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Esconde as imagens que estão fora do quadro */
+    border-radius: 0;
+    position: relative;
+
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Suaviza a transição */
+    width: 100%; /* 100% para cada slide (3 slides = 300%) */
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%; /* Ajuste para cada slide ocupar o quadro inteiro */
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 600px; /* Define altura do slide entre nav-bar e os cards */
+    display: block;
+    object-fit: cover; /* Corta a imagem sem distorcer */
+}
+
+.caption {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-family: 'EB Garamond', serif;
+    font-size: 2rem;
+    line-height: 1.6;
+    margin-bottom: 200px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Título Cardápio */
+.titulo-secao {
+    width: 100%;
+    text-align: center; /* Centraliza o texto */
+    padding: 50px 0 15px 0; /* Espaço entre o slider e o cardápio */
+    position: relative;
+    z-index: 10;
+}
+
+.titulo-secao h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.5rem; /* Tamanho imponente */
+    color: #fff;
+    letter-spacing: 4px; /* Espaçamento entre letras para elegância */
+    position: relative;
+    display: inline-block;
+}
+
+/* Linha decorativa abaixo do nome CARDÁPIO */
+.titulo-secao h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #b22222; /* O vermelho da sua marca */
+    margin: 10px auto 0; /* Centraliza a linha */
+    border-radius: 2px;
+}
+
+/* CAIXA DE PESQUISA */
+
+.search-wrapper {
+    width: 100%;
+    max-width: 1400px; /* Alinhado com o main-content */
+    position: relative;
+}
+
+.search-box {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.search-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box h5 {
+    font-family: 'EB Garamond', serif; 
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Volta o botão para baixo do input */
+    border-radius: 8px;
+    border: 1px solid #b22222;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.search-box input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(178, 34, 34, 0.5);
+}
+
+.search-box button {
+    width: 100%;
+    padding: 12px;
+    background: #b22222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #8b0000;
+    transform: scale(1.02);
+}
+
+/* Container das Pizzas */
+.container-pizzas {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Define 3 colunas por linha */
+    gap: 25px;
+    flex-grow: 1;
+    width: 100%;
+    justify-items: center;
+    min-width: 0;
+}
+
+.sidebar-right {
+    position: sticky;
+    top: 140px; /* Ajustado para a altura da sua navbar */
+    z-index: 10;
+}
+
+/* Sidebar da Busca */
+.sidebar-right, .spacer-left {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 100px; /* Faz a busca acompanhar o scroll conforme você desce */
+}
+
+/* Estilo individual do Card */
+.pizza-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.3s;
+    overflow: hidden; /* Garante que a imagem não saia do arredondamento do card */
+    display: flex;
+    flex-direction: column;
+    max-width: 350px; 
+    width: 100%;
+}
+
+.pizza-card:hover {
+    transform: translateY(-8px); /* Efeito de flutuar ao passar o mouse */
+}
+
+.pizza-card img {
+    width: 100%; /* Imagem ocupa a largura do card */
+    height: 220px; /* Ajuste de altura para cobrir a "metade" desejada */
+    object-fit: cover; /* Não distorce a imagem */
+    display: block;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o corpo preencher o espaço restante */
+    text-align: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    gap: 20px; /* Controla a distância entre o preço e o botão */
+}
+
+.preco {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    white-space: nowrap;
+}
+
+.pizza-card h3 { /* Nome dos Produtos */
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem; /* Define o tamanho do texto */
+    letter-spacing: 1px; /* Define o espaçamento do texto */
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.pizza-card p { /* Descrição dos Produtos */
+    font-family: 'EB Garamond', serif;
+    font-size: 14px; /* Define o tamanho do texto */
+    color: #555;
+    min-height: 40px; /* Mantém o alinhamento se o texto for longo */
+    margin-bottom: 10px;
+}
+
+.btn-comprar {
+    font-family: 'EB Garamond', serif;
+    background-color: #b22222;
+    color: white;
+    border: none;
+    padding: 15px 20px; 
+    border-radius: 8px;
+    cursor: pointer;
+    width: auto;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #8b0000
+}
+
+/* RODAPÉ */
+footer {
+    border-top: 1px solid #b22222; /* Borda vermelha igual à Navbar */
+    margin-top: auto; /* Joga o footer para o fim da página */
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+/* Sidebar - Estilo Cartão de Vidro */
+.perfil-sidebar {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    height: fit-content;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #b22222;
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-nome {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.badge-fidelidade {
+    background: #b22222;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Menu de Navegação do Perfil */
+.perfil-menu {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.perfil-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.perfil-menu a:hover, .perfil-menu a.active {
+    background: #b22222;
+    padding-left: 25px;
+    color: #fff;
+    border-left: 4px solid #b22222;
+}
+
+/* Efeito da linha vermelha para ambos */
+.link-nav-estilo::after {
+    content: '';
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #b22222;
+    transition: width 0.4s ease;
+}
+
+.link-nav-estilo:hover::after, .dropbtn:hover::after {
+    width: 40px;
+}
+
+.link-nav-estilo:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.divisor {
+    color: rgba(122, 122, 122, 0.3); /* Branco com transparência para não brilhar tanto quanto a logo */
+    font-size: 1.5rem;                 /* Tamanho da barra */
+    margin: 0 10px;                    /* Espaço igual entre a logo e o menu */
+    display: flex;
+    align-items: center;               /* Alinha a barra verticalmente se for um flex-item */
+    align-self: center;
+    user-select: none;                 /* Impede que o usuário selecione o texto da barra */
+    font-family: Arial, sans-serif;    /* Fonte simples para a barra ficar reta */
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    position: static;
+    transform: none;
+    align-items: flex;
+    align-items: center;
+    margin-right: 20px; /* Adiciona um espaço entre a logo e o menu */
+}
+
+.dropdown, .nav-item {
+    height: 100%;
+    position: relative;
+    align-items: center;
+    display: flex;
+}
+
+/* Links dentro do menu */
+.dropdown-content a {
+    color: #fff;
+    padding: 25px 25px;
+    text-decoration: none;
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.dropdown-content a.logout-link {
+    color: #ff4d4d; /* Mantém o texto inicialmente em um tom de vermelho para destaque */
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+}
+
+/* Linha divisória simples */
+.dropdown-content hr {
+    border: 0;
+    border-top: 1px solid rgba(178, 34, 34, 0.4);
+}
+
+.logout-link {
+    color: #ff4d4d !important;
+}
+
+
+.menu span {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Botão de Sair (Logout) */
+.btn-logout {
+    background: #b22222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s; 
+}
+
+.btn-logout:hover {
+    background: #8b0000;
+    transform: scale(1.05);
+}
+
+/* CAIXA DE PESQUISA */
+.search-wrapper {
+    width: 100%;
+    max-width: 1400px; /* Alinhado com o main-content */
+    position: relative;
+}
+
+.search-box {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.search-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box h5 {
+    font-family: 'EB Garamond', serif; 
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Volta o botão para baixo do input */
+    border-radius: 8px;
+    border: 1px solid #b22222;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.search-box input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(178, 34, 34, 0.5);
+}
+
+.search-box button {
+    width: 100%;
+    padding: 12px;
+    background: #b22222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #8b0000;
+    transform: scale(1.02);
+}
+
+.pizza-card img {
+    width: 100%; /* Imagem ocupa a largura do card */
+    height: 220px; /* Ajuste de altura para cobrir a "metade" desejada */
+    object-fit: cover; /* Não distorce a imagem */
+    display: block;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o corpo preencher o espaço restante */
+    text-align: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    gap: 20px; /* Controla a distância entre o preço e o botão */
+}
+
+.preco {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    white-space: nowrap;
+}
+
+.pizza-card h3 { /* Nome dos Produtos */
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem; /* Define o tamanho do texto */
+    letter-spacing: 1px; /* Define o espaçamento do texto */
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.pizza-card p { /* Descrição dos Produtos */
+    font-family: 'EB Garamond', serif;
+    font-size: 14px; /* Define o tamanho do texto */
+    color: #555;
+    min-height: 40px; /* Mantém o alinhamento se o texto for longo */
+    margin-bottom: 10px;
+}
+
+.btn-comprar {
+    font-family: 'EB Garamond', serif;
+    background-color: #b22222;
+    color: white;
+    border: none;
+    padding: 15px 20px; 
+    border-radius: 8px;
+    cursor: pointer;
+    width: auto;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #8b0000
+}
+
+/* RODAPÉ */
+footer {
+    margin-top: auto; /* Joga o footer para o fim da página */
+    padding: 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+/* ============================================================
+   4. ÁREA DE PEDIDOS E PERFIL
+   ============================================================ */
+.titulo-sessao {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #b22222;
+    display: inline-block;
+}
+
+.card-pedido {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.status-pedido.entregue { background: #2ecc71; }
+.status-pedido.preparo { background: #e67e22; }
+
+.card-pedido:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.id-pedido {
+    color: #b22222;
+    font-weight: bold;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem;
+    display: block;
+}
+
+.itens-pedido {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.status-pedido {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* ============================================================
+   5. PÁGINA DE USUÁRIO E PERFIL (USUARIOS.CSS)
+   ============================================================ */
+
+/* Layout Principal em Grid */
+.container-perfil {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 5%;
+    flex: 1;
+    align-items: flex-start;
+}
+
+/* Sidebar - Estilo Cartão de Vidro */
+.perfil-sidebar {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    height: fit-content;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #b22222;
+    margin-bottom: 20px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.3s;
+}
+
+#user-nome {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.badge-fidelidade {
+    background: #b22222;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Menu de Navegação Lateral do Perfil */
+.perfil-menu {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.perfil-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.perfil-menu a:hover, 
+.perfil-menu a.active {
+    background: #b22222;
+    padding-left: 25px;
+    border-left: 4px solid #a51d1d; 
+}
+
+/* ============================================================
+   6. RESPONSIVIDADE (MEDIA QUERIES)
+   ============================================================ */
+@media (max-width: 600px) {
+    .navbar {
+        height: auto;
+        padding: 20px 5% !important;
+        flex-direction: column; /* Logo em cima, menu embaixo */
+    }
+
+    .login-container {
+        padding-right: 0;
+        padding: 20px;
+        height: auto;
+    }
+
+    .login-content-flex {
+        flex-direction: column; /* Empilha um em cima do outro */
+        text-align: center;
+        gap: 40px;
+    }
+
+    .login-history {
+        text-align: center; /* Centraliza o texto no mobile */
+        width: 100%;
+    }
+
+    .login-box {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .pizza-card, .pizza-card:hover {
+        transition: none;
+        transform: none;
+    }
+    
+    .logo h2 {font-size: 2rem; }
+
+    .main-content {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0;
+    } 
+    .spacer-left {
+        display: none; /* Remove o espaço vazio em telas menores */
+    }
+    .sidebar-right {
+        position: static;
+        width: 100%;
+        max-width: 400px;
+    }
+}

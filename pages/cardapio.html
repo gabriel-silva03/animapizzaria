@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        // Se não houver a marcação "logado", manda de volta para o login
+        if (localStorage.getItem("logado") !== "true") {
+            window.location.href = "../pages/login.html";
+        }
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+
+            <header class="navbar">
+                <div class="logo">
+                    <h2>AllegroPizzaria</h2>
+                </div>
+
+                <nav class="menu">
+
+                    <div class="dropdown">
+                        <button class="dropbtn">MENU</button>
+                        <div class="dropdown-content">
+                            <a href="../pages/usuario.html">Meu perfil</a>
+                            <hr>
+                            <a href="#" onclick="logout()" class="logout-link">Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="../pages/pedidos.html" class="dropbtn link-nav-estilo">PEDIDOS</a>
+                    </div>
+                    
+                </nav>
+            </header>
+
+            <section class="slider-container">
+                <div class="vignette"></div>
+                    <div class="slider">
+                        <div class="slide">
+                            <img src="https://images.pexels.com/photos/12032522/pexels-photo-12032522.jpeg?_gl=1*1wxyzsv*_ga*MTQ2NzU2OTg1NS4xNzY5Mzk2NDI5*_ga_8JE65Q40S6*czE3NzA2MTAxMzgkbzIkZzEkdDE3NzA2MTAzNzYkajU5JGwwJGgw" alt="Oferta 1">
+                        <div class="caption">PROMOÇÃO: 2 Pizzas por R$ 79,90</div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.pexels.com/photos/30504706/pexels-photo-30504706.jpeg?_gl=1*feucnp*_ga*MTQ2NzU2OTg1NS4xNzY5Mzk2NDI5*_ga_8JE65Q40S6*czE3NzA2MTAxMzgkbzIkZzEkdDE3NzA2MTAyMTIkajU5JGwwJGgw" alt="Oferta 2">
+                        <div class="caption">Combo Família: Pizza GG + Refri 2L</div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1613695825094-6c7f5afe99ad?q=80&w=1170" alt="Oferta 3">
+                        <div class="caption">Entrega Grátis nos primeiros 5km!</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="titulo-secao">
+                <h2>CARDÁPIO</h2>
+            </div>
+
+            <main class="main-content">
+                <div class="spacer-left"></div>
+
+                <section class="container-pizzas">
+                    <div class="pizza-card">
+                        <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=1176" alt="Calabresa">
+                        <div class="card-body">
+                            <h3>Calabresa</h3>
+                            <p>Molho de tomate, mussarela, calabresa e cebola</p>
+                            <div class="card-footer">
+                                <span class="preco">R$ 45,00</span>
+                                <button class="btn-comprar">Comprar agora</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1169" alt="Margherita">
+                        <div class="card-body">
+                            <h3>Margherita</h3>
+                            <p>Manjericão fresco, mussarela e fatias de tomate.</p>
+                            <div class="card-footer">
+                                <span class="preco">R$ 42,00</span>
+                                <button class="btn-comprar">Comprar agora</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card">
+                        <img src="https://images.unsplash.com/photo-1712652080841-9e480a2c43ec?q=80&w=687" alt="Mussarela">
+                        <div class="card-body">
+                            <h3>Mussarela</h3>
+                            <p>Molho de tomate, mussarela e fatias de tomate.</p>
+                            <div class="card-footer">
+                                <span class="preco">R$ 40,00</span>
+                                <button class="btn-comprar">Comprar agora</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="sidebar-right">
+                    <section class="search-box">
+                        <h5>Qual sabor você está procurando hoje?</h5>
+                        <input type="text" id="pesquisar" placeholder="Digite o sabor desejado">
+                        <button onclick="Pesquisar()">Pesquisar</button>
+                    </section>
+                </aside>
+            </main>
+
+        <footer>
+            <p>&copy; 2025 ALLEGRO PIZZARIA LTDA. Todos os direitos reservados.</p>
+        </footer>
+
+    <script src="../js/cardapio.js"></script>
+
+</body>
+</html>

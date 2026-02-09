@@ -9,8 +9,8 @@ function logar() {
         // Salvamos no navegador que o usuário está logado
         localStorage.setItem("logado", "true");
         
-        // Redirecionamos para a página de produtos
-        window.location.href = "produtos.html"; 
+        // Redirecionamos para a página de cardapio
+        window.location.href = "../pages/cardapio.html"; 
         
     } else {
         alert("Usuário ou senha incorretos! Tente novamente.");
