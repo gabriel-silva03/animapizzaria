@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Verificação de Segurança
     if (localStorage.getItem("logado") !== "true") {
+<<<<<<< HEAD
         window.location.href = "../pages/login.html";
+=======
+        window.location.href = "../index.html";
+>>>>>>> 46d8814 (animapizzaria)
         return;
     }
 
@@ -48,5 +52,9 @@ function Pesquisar() {
 function logout() { 
     localStorage.removeItem("logado"); 
     localStorage.removeItem("usuarioNome"); 
+<<<<<<< HEAD
     window.location.href = "../pages/login.html"; 
+=======
+    window.location.href = "../index.html"; 
+>>>>>>> 46d8814 (animapizzaria)
 }
